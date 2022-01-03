@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Dashboard from './pages/dashboard/Dashboard';
+import Course from './pages/course/Course';
 
 const store = configureStore();
 
@@ -30,6 +31,9 @@ function App() {
 					<Switch>
 						<Route exact path='/'>
 							<Dashboard />
+						</Route>
+						<Route path='/courses/:id'>
+							<Course />
 						</Route>
 						<Route path='/login'>
 							<Login />
