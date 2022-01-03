@@ -1,25 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import configureStore from './redux/store';
+import { courseAdded } from './redux/courses';
+import { reviewAdded } from './redux/reviews';
+import Navbar from './components/Navbar';
+import Login from './pages/login/Login';
+import Signup from './pages/signup/Signup';
+import Dashboard from './pages/dashboard/Dashboard';
+
+const store = configureStore();
+
+store.dispatch(
+	courseAdded({
+		name: 'Redux Tutorial',
+		description: 'Redux Tutorial on YouTube',
+	})
+);
+
+store.dispatch(
+	reviewAdded({ stars: 4, comment: 'great', course_id: 0, user_id: 1 })
+);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className='App'>
+			<BrowserRouter>
+				<div className='container'>
+					<Navbar />
+					<Switch>
+						<Route exact path='/'>
+							<Dashboard />
+						</Route>
+						<Route path='/login'>
+							<Login />
+						</Route>
+						<Route path='/signup'>
+							<Signup />
+						</Route>
+					</Switch>
+				</div>
+			</BrowserRouter>
+		</div>
+	);
 }
 
 export default App;
