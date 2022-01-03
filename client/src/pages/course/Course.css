@@ -1,6 +1,6 @@
 .course-details {
 	display: grid;
-	grid-template-columns: 3fr 2fr;
+	grid-template-columns: 1fr;
 	align-items: start;
 	grid-gap: 60px;
 }
@@ -9,4 +9,5 @@
 	background-color: #fff;
 	padding: 30px;
 	border-radius: 4px;
+	text-align: center;
 }
