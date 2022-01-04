@@ -1,15 +1,18 @@
 import { useState } from 'react';
+import { useFetch } from '../../hooks/useFetch';
 
 // styles
 import './Login.css';
 
 export default function Login() {
-	const [email, setEmail] = useState('');
+	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
+
+	const { postData, data } = useFetch('http://localhost:3000/login', 'POST');
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(email, password);
+		postData(userName, password);
 	};
 
 	return (
@@ -20,9 +23,9 @@ export default function Login() {
 					<span>email:</span>
 					<input
 						required
-						type='email'
-						onChange={(e) => setEmail(e.target.value)}
-						value={email}
+						type='text'
+						onChange={(e) => setUserName(e.target.value)}
+						value={userName}
 					/>
 				</label>
 				<label>
