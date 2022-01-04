@@ -9,6 +9,8 @@ import Signup from './pages/signup/Signup';
 import Dashboard from './pages/dashboard/Dashboard';
 import Course from './pages/course/Course';
 
+//hopefully this changes vscode back to black
+
 const store = configureStore();
 
 store.dispatch(
