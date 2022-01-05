@@ -13,18 +13,17 @@ export default function Login() {
 
 	const [login, result] = useLoginMutation();
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
 		login({ username: userName, password: password });
-
 	};
 
-	// useEffect(() => {
-	// 	if (data) {
-	// 		console.log(data);
-	// 		history.push('/');
-	// 	}
-	// }, [data, history]);
+	console.log(result.isSuccess);
+	useEffect(() => {
+		if (result.isSuccess) {
+			history.push('/');
+		}
+	}, [result.isSuccess]);
 
 	return (
 		<div className='login'>

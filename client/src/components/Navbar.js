@@ -8,7 +8,7 @@ import './Navbar.css';
 export default function Navbar({ currentUser }) {
 	const history = useHistory();
 
-	const [logout] = useLogoutMutation();
+	const [logout, result] = useLogoutMutation();
 	const handleLogout = () => {
 		logout();
 		history.push('/login');

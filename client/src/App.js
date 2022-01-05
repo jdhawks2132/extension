@@ -14,27 +14,27 @@ function App() {
 	const user = null || data;
 	return (
 		<div className='App'>
-				<BrowserRouter>
-					<div className='container'>
-						<Navbar currentUser={user} />
-						<Switch>
-							<Route exact path='/'>
-								{!user && <Redirect to='/login' />}
-								{user && <Dashboard />}
-							</Route>
-							<Route path='/courses/:id'>
-								{!user && <Redirect to='/login' />}
-								{user && <Course />}
-							</Route>
-							<Route path='/login'>
-								<Login />
-							</Route>
-							<Route path='/signup'>
-								<Signup />
-							</Route>
-						</Switch>
-					</div>
-				</BrowserRouter>
+			<BrowserRouter>
+				<div className='container'>
+					<Navbar currentUser={user} />
+					<Switch>
+						<Route exact path='/'>
+							{!user && <Redirect to='/login' />}
+							{user && <Dashboard />}
+						</Route>
+						<Route path='/courses/:id'>
+							{!user && <Redirect to='/login' />}
+							{user && <Course />}
+						</Route>
+						<Route path='/login'>
+							<Login />
+						</Route>
+						<Route path='/signup'>
+							<Signup />
+						</Route>
+					</Switch>
+				</div>
+			</BrowserRouter>
 		</div>
 	);
 }
