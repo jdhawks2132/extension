@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 // styles & images
 import './Navbar.css';
 
-export default function Navbar() {
+export default function Navbar({ setCurrentUser, currentUser }) {
+	const handleLogout = () => {
+		setCurrentUser(null);
+		fetch('api/logout', { method: 'DELETE' });
+	};
 	return (
 		<nav className='navbar'>
 			<ul>
@@ -18,7 +22,9 @@ export default function Navbar() {
 						<Link to='/signup'>Signup</Link>
 					</li>
 					<li>
-						<button className='btn'>Logout</button>
+						<button className='btn' onClick={handleLogout}>
+							Logout
+						</button>
 					</li>
 				</>
 			</ul>

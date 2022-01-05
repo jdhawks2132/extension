@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useFetch } from '../../hooks/useFetch';
+import { useHistory } from 'react-router-dom';
 
 // styles
 import './Signup.css';
@@ -7,11 +9,24 @@ export default function Signup() {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [userName, setUserName] = useState('');
+	const history = useHistory();
 
+	const { postData, data, error } = useFetch('api/signup', 'POST');
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(email, password, userName);
+		postData({
+			username: userName,
+			password: password,
+			email: email,
+			admin: false,
+		});
 	};
+
+	useEffect(() => {
+		if (data) {
+			history.push('/');
+		}
+	}, [data, history]);
 
 	return (
 		<div className='signup'>
