@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import { useLogoutMutation } from '../redux/extensionAPI';
 
 // styles & images
 import './Navbar.css';
 
-export default function Navbar({ setCurrentUser, currentUser }) {
+export default function Navbar({ currentUser }) {
 	const history = useHistory();
+
+	const [logout] = useLogoutMutation();
 	const handleLogout = () => {
-		setCurrentUser(null);
-		fetch('api/logout', { method: 'DELETE' });
+		logout();
 		history.push('/login');
 	};
 

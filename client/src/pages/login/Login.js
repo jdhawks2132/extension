@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useFetch } from '../../hooks/useFetch';
 import { useHistory } from 'react-router-dom';
+import { useLoginMutation } from '../../redux/extensionAPI';
 
 // styles
 import './Login.css';
@@ -10,19 +11,20 @@ export default function Login() {
 	const [password, setPassword] = useState('');
 	const history = useHistory();
 
-	const { postData, data } = useFetch('api/login', 'POST');
+	const [login, result] = useLoginMutation();
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		postData({ username: userName, password: password });
+		login({ username: userName, password: password });
+
 	};
 
-	useEffect(() => {
-		if (data) {
-			console.log(data);
-			history.push('/');
-		}
-	}, [data, history]);
+	// useEffect(() => {
+	// 	if (data) {
+	// 		console.log(data);
+	// 		history.push('/');
+	// 	}
+	// }, [data, history]);
 
 	return (
 		<div className='login'>

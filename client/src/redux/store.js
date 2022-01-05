@@ -1,6 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import reducer from './reducers';
+import { extensionApi } from './extensionAPI';
 
-export default function store () {
-	return configureStore({ reducer });
-}
+export const store = configureStore({
+	reducer: {
+		[extensionApi.reducerPath]: extensionApi.reducer,
+	},
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware().concat(extensionApi.middleware),
+});

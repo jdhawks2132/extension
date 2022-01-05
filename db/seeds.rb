@@ -27,6 +27,6 @@ Course.create(
 Course.create(
 	name: 'COBOL',
 	platform: 'Data Science',
-	decscription: 'Learn how to build data science applications with COBOL',
+	description: 'Learn how to build data science applications with COBOL',
 )
 puts '✅ Done seeding courses!'
