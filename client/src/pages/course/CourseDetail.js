@@ -1,11 +1,47 @@
 import { useParams } from 'react-router-dom';
-import { useCourseQuery } from '../../redux/extensionAPI';
+import {
+	useCourseQuery,
+	useAddReviewMutation,
+	useDeleteReviewMutation,
+	useUpdateReviewMutation,
+} from '../../redux/extensionAPI';
+import { useState } from 'react';
 
-const CourseDetail = () => {
+const CourseDetail = ({ user }) => {
 	const { id } = useParams();
+	const [addReview, results] = useAddReviewMutation();
+	const [deleteReview] = useDeleteReviewMutation();
+	const [updateReview] = useUpdateReviewMutation();
 	const { data, error, isLoading, isFetching, isSuccess } = useCourseQuery(id);
+	const [comment, setComment] = useState('');
+	const [stars, setStars] = useState('');
 
-	console.log(data);
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		addReview({
+			comment: comment,
+			stars: stars,
+			course_id: id,
+			user_id: user.id,
+		});
+		setComment('');
+		setStars('');
+	};
+
+	const handleDelete = async (id) => {
+		await deleteReview(id);
+	};
+
+	const handleUpdate = async (id) => {
+		await updateReview(id, {
+			comment: comment,
+			stars: stars,
+		});
+		setComment('');
+		setStars('');
+	};
+
+	console.log(data, user);
 	return (
 		<div className='course-detail'>
 			{isSuccess && (
@@ -14,11 +50,43 @@ const CourseDetail = () => {
 					<h3>{data.platform}</h3>
 					<p>{data.description}</p>
 					<ul>
-						<li>Review Comment - ⭐️⭐️⭐️</li>
-						<li>Review Comment - ⭐️⭐️</li>
+						{data.reviews.map((review) => {
+							return (
+								<li key={review.id}>
+									{review.comment} - {review.stars}/5
+									<button onClick={() => handleUpdate(review.id)}>
+										update
+									</button>
+									<button onClick={() => handleDelete(review.id)}>
+										delete
+									</button>
+								</li>
+							);
+						})}
 					</ul>
 				</div>
 			)}
+			<form onSubmit={handleSubmit} className='auth-form'>
+				<label>
+					<span>comment</span>
+					<input
+						required
+						type='text'
+						onChange={(e) => setComment(e.target.value)}
+						value={comment}
+					/>
+				</label>
+				<label>
+					<span>stars</span>
+					<input
+						required
+						type='integer'
+						onChange={(e) => setStars(e.target.value)}
+						value={stars}
+					/>
+				</label>
+				<button className='btn'>submit</button>
+			</form>
 		</div>
 	);
 };

@@ -10,16 +10,16 @@ import Course from './pages/course/Course';
 
 function App() {
 	const { data, isSuccess } = useCurrentUserQuery();
-	console.log("SUCCESS?", isSuccess)
-	console.log("DATA", data)
+	console.log('SUCCESS?', isSuccess);
+	console.log('DATA', data);
 
 	useEffect(() => {
 		if (isSuccess) {
-			console.log("Successful login on app level")
+			console.log('Successful login on app level');
 		} else {
-			console.log("Not logged in on app level")
+			console.log('Not logged in on app level');
 		}
-	}, [isSuccess, data])
+	}, [isSuccess, data]);
 
 	return (
 		<div className='App'>
@@ -33,7 +33,7 @@ function App() {
 						</Route>
 						<Route path='/courses/:id'>
 							{!data && <Redirect to='/login' />}
-							{data && <Course />}
+							{data && <Course user={data} />}
 						</Route>
 						<Route path='/login'>
 							<Login user={data} />

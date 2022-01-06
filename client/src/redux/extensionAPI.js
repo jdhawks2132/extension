@@ -32,6 +32,7 @@ export const extensionApi = createApi({
 				url: '/logout',
 				method: 'DELETE',
 			}),
+			invalidatesTags: ['User'],
 		}),
 		addReview: builder.mutation({
 			query: (review) => ({

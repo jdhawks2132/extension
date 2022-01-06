@@ -7,25 +7,25 @@ User.create(
 	email: 'jessie@user.com',
 	username: 'jessie',
 	password: '123',
-	admin: false
+	admin: false,
 )
 User.create(
 	email: 'obie@user.com',
 	username: 'obie',
 	password: '123',
-	admin: true
+	admin: true,
 )
 User.create(
 	email: 'joshua@user.com',
 	username: 'joshua',
 	password: '123',
-	admin: true
+	admin: true,
 )
 User.create(
 	email: 'rodrigo@user.com',
 	username: 'rodrigo',
 	password: '123',
-	admin: true
+	admin: true,
 )
 puts '✅ Done seeding users!'
 
@@ -65,55 +65,55 @@ puts 'Seeding Reviews'
 Review.create(
 	stars: '4',
 	comment: 'Great Course - I learned so much!',
-	user_id: '1',
+	user_id: User.all.sample.id,
 	course_id: Course.all.sample.id,
 )
 
 Review.create(
 	stars: '3',
 	comment: 'Pace was very fast',
-	user_id: '2',
+	user_id: User.all.sample.id,
 	course_id: Course.all.sample.id,
 )
 
 Review.create(
 	stars: '5',
 	comment: 'This was very helpful',
-	user_id: '2',
+	user_id: User.all.sample.id,
 	course_id: Course.all.sample.id,
 )
 
 Review.create(
 	stars: '2',
 	comment: 'Could be better',
-	user_id: '3',
-	course_id: '3',
+	user_id: User.all.sample.id,
+	course_id: Course.all.sample.id,
 )
 
 Review.create(
 	stars: '4',
 	comment: 'Loved - highly recommend',
-	user_id: '2',
+	user_id: User.all.sample.id,
 	course_id: Course.all.sample.id,
 )
 
 Review.create(
-    stars: '2',
-    comment: 'Much wow',
-    user_id: '2',
-    course_id: Course.all.sample.id,
+	stars: '2',
+	comment: 'Much wow',
+	user_id: User.all.sample.id,
+	course_id: Course.all.sample.id,
 )
 Review.create(
-    stars: '3',
-    comment: 'Fascinating',
-    user_id: '3',
-    course_id: Course.all.sample.id,
+	stars: '3',
+	comment: 'Fascinating',
+	user_id: User.all.sample.id,
+	course_id: Course.all.sample.id,
 )
 Review.create(
-    stars: '2',
-    comment: 'Mucho bueno',
-    user_id: '4',
-    course_id: Course.all.sample.id,
+	stars: '2',
+	comment: 'Mucho bueno',
+	user_id: User.all.sample.id,
+	course_id: Course.all.sample.id,
 )
 
 puts '✅ Done seeding reviews!'
