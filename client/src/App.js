@@ -1,15 +1,27 @@
 import './App.css';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import { useCurrentUserQuery } from './redux/extensionAPI';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Dashboard from './pages/dashboard/Dashboard';
 import Course from './pages/course/Course';
+// import { useLogoutMutation } from './redux/extensionAPI';
 
 function App() {
 	const { data, isSuccess } = useCurrentUserQuery();
+	console.log("SUCCESS?", isSuccess)
+	console.log("DATA", data)
+
+	useEffect(() => {
+		if (isSuccess) {
+			console.log("Successful login on app level")
+		} else {
+			console.log("Not logged in on app level")
+		}
+	}, [isSuccess, data])
 
 	return (
 		<div className='App'>
@@ -26,7 +38,7 @@ function App() {
 							{data && <Course />}
 						</Route>
 						<Route path='/login'>
-							<Login />
+							<Login user={data} />
 						</Route>
 						<Route path='/signup'>
 							<Signup />

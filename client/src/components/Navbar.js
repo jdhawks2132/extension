@@ -11,6 +11,7 @@ export default function Navbar({ currentUser }) {
 	const [logout] = useLogoutMutation();
 	const handleLogout = () => {
 		logout();
+		console.log("Logged out")
 		history.push('/login');
 	};
 

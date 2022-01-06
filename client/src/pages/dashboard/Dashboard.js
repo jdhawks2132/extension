@@ -6,7 +6,7 @@ import './Dashboard.css';
 export default function Dashboard() {
 	const { data, error, isLoading, isFetching, isSuccess } = useCoursesQuery();
 
-	console.log(data);
+	// console.log(data);
 	return (
 		<div>
 			<h2 className='page-title'>Dashboard</h2>

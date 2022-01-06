@@ -1,29 +1,27 @@
 import { useState, useEffect } from 'react';
-import { useFetch } from '../../hooks/useFetch';
 import { useHistory } from 'react-router-dom';
 import { useLoginMutation } from '../../redux/extensionAPI';
 
 // styles
 import './Login.css';
 
-export default function Login() {
+export default function Login({ user }) {
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
 	const history = useHistory();
-
 	const [login, result] = useLoginMutation();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		login({ username: userName, password: password });
+		login({ username: userName, password: password })
 	};
 
-	console.log(result.status);
 	useEffect(() => {
-		if (result.status === 'fulfilled') {
+		console.log('user', user);
+		if (user) {
 			history.push('/');
 		}
-	}, [result.status]);
+	}, [user, history]);
 
 	return (
 		<div className='login'>
