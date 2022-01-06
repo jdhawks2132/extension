@@ -5,7 +5,7 @@ import { useLoginMutation } from '../../redux/extensionAPI';
 // styles
 import './Login.css';
 
-export default function Login({ user }) {
+export default function Login({ user, verifyLogin }) {
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
 	const history = useHistory();
@@ -14,6 +14,7 @@ export default function Login({ user }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		login({ username: userName, password: password })
+			.then(verifyLogin)
 	};
 
 	useEffect(() => {

@@ -1,19 +1,12 @@
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 import { useLogoutMutation } from '../redux/extensionAPI';
 
 // styles & images
 import './Navbar.css';
 
 export default function Navbar({ currentUser }) {
-	const history = useHistory();
-
 	const [logout] = useLogoutMutation();
-	const handleLogout = () => {
-		logout();
-		console.log("Logged out")
-		history.push('/login');
-	};
+	const handleLogout = () => logout().then(() => window.location.reload())
 
 	return (
 		<nav className='navbar'>

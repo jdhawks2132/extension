@@ -2,13 +2,11 @@ import './App.css';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useCurrentUserQuery } from './redux/extensionAPI';
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Dashboard from './pages/dashboard/Dashboard';
 import Course from './pages/course/Course';
-// import { useLogoutMutation } from './redux/extensionAPI';
 
 function App() {
 	const { data, isSuccess } = useCurrentUserQuery();
