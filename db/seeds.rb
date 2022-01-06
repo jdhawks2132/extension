@@ -3,6 +3,32 @@ Review.destroy_all
 
 puts 'Seeding courses...'
 
+User.create(
+	email: 'jessie@user.com',
+	username: 'jessie',
+	password: '123',
+	admin: false
+)
+User.create(
+	email: 'obie@user.com',
+	username: 'obie',
+	password: '123',
+	admin: true
+)
+User.create(
+	email: 'joshua@user.com',
+	username: 'joshua',
+	password: '123',
+	admin: true
+)
+User.create(
+	email: 'rodrigo@user.com',
+	username: 'rodrigo',
+	password: '123',
+	admin: true
+)
+puts '✅ Done seeding users!'
+
 Course.create(
 	name: 'Ruby on Rails',
 	platform: 'Web Development',
@@ -70,3 +96,24 @@ Review.create(
 	user_id: '2',
 	course_id: Course.all.sample.id,
 )
+
+Review.create(
+    stars: '2',
+    comment: 'Much wow',
+    user_id: '2',
+    course_id: Course.all.sample.id,
+)
+Review.create(
+    stars: '3',
+    comment: 'Fascinating',
+    user_id: '3',
+    course_id: Course.all.sample.id,
+)
+Review.create(
+    stars: '2',
+    comment: 'Mucho bueno',
+    user_id: '4',
+    course_id: Course.all.sample.id,
+)
+
+puts '✅ Done seeding reviews!'
