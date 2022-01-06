@@ -11,20 +11,19 @@ import Course from './pages/course/Course';
 function App() {
 	const { data, isSuccess } = useCurrentUserQuery();
 
-	const user = null || data;
 	return (
 		<div className='App'>
 			<BrowserRouter>
 				<div className='container'>
-					<Navbar currentUser={user} />
+					<Navbar currentUser={data} />
 					<Switch>
 						<Route exact path='/'>
-							{!user && <Redirect to='/login' />}
-							{user && <Dashboard />}
+							{!data && <Redirect to='/login' />}
+							{data && <Dashboard />}
 						</Route>
 						<Route path='/courses/:id'>
-							{!user && <Redirect to='/login' />}
-							{user && <Course />}
+							{!data && <Redirect to='/login' />}
+							{data && <Course />}
 						</Route>
 						<Route path='/login'>
 							<Login />

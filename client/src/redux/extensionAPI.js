@@ -5,6 +5,7 @@ export const extensionApi = createApi({
 	baseQuery: fetchBaseQuery({
 		baseUrl: '/api',
 	}),
+	tagTypes: ['User', 'Course', 'Review'],
 	endpoints: (builder) => ({
 		courses: builder.query({
 			query: () => '/courses',
@@ -14,6 +15,7 @@ export const extensionApi = createApi({
 		}),
 		currentUser: builder.query({
 			query: () => '/me',
+			providesTags: ['User'],
 		}),
 		login: builder.mutation({
 			query: (login) => ({
@@ -21,6 +23,7 @@ export const extensionApi = createApi({
 				method: 'POST',
 				body: login,
 			}),
+			invalidatesTags: ['User'],
 		}),
 		logout: builder.mutation({
 			query: () => ({

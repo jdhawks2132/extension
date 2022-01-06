@@ -1,3 +1,6 @@
+Course.destroy_all
+Review.destroy_all
+
 puts 'Seeding courses...'
 
 Course.create(
@@ -30,3 +33,40 @@ Course.create(
 	description: 'Learn how to build data science applications with COBOL',
 )
 puts '✅ Done seeding courses!'
+
+puts 'Seeding Reviews'
+
+Review.create(
+	stars: '4',
+	comment: 'Great Course - I learned so much!',
+	user_id: '1',
+	course_id: Course.all.sample.id,
+)
+
+Review.create(
+	stars: '3',
+	comment: 'Pace was very fast',
+	user_id: '2',
+	course_id: Course.all.sample.id,
+)
+
+Review.create(
+	stars: '5',
+	comment: 'This was very helpful',
+	user_id: '2',
+	course_id: Course.all.sample.id,
+)
+
+Review.create(
+	stars: '2',
+	comment: 'Could be better',
+	user_id: '3',
+	course_id: '3',
+)
+
+Review.create(
+	stars: '4',
+	comment: 'Loved - highly recommend',
+	user_id: '2',
+	course_id: Course.all.sample.id,
+)

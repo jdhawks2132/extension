@@ -18,12 +18,12 @@ export default function Login() {
 		login({ username: userName, password: password });
 	};
 
-	console.log(result.isSuccess);
+	console.log(result.status);
 	useEffect(() => {
-		if (result.isSuccess) {
+		if (result.status === 'fulfilled') {
 			history.push('/');
 		}
-	}, [result.isSuccess]);
+	}, [result.status]);
 
 	return (
 		<div className='login'>
