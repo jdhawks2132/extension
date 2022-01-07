@@ -9,12 +9,5 @@
 		"clean": "rm -rf public",
 		"deploy": "cp -a client/build/. public/",
 		"heroku-postbuild": "npm run clean && npm run build && npm run deploy"
-	},
-	"dependencies": {
-		"@reduxjs/toolkit": "^1.7.1",
-		"axios": "^0.24.0",
-		"react-redux": "^7.2.6",
-		"react-router-dom": "^5.2.0",
-		"reselect": "^4.1.5"
 	}
 }
