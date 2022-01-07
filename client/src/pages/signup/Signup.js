@@ -11,7 +11,7 @@ export default function Signup() {
 	const [userName, setUserName] = useState('');
 	const history = useHistory();
 
-	const { postData, data, error } = useFetch('api/signup', 'POST');
+	const { postData, data} = useFetch('api/signup', 'POST');
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		postData({

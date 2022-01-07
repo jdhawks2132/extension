@@ -9,7 +9,7 @@ export default function Login({ user, verifyLogin }) {
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
 	const history = useHistory();
-	const [login, result] = useLoginMutation();
+	const [login] = useLoginMutation();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
