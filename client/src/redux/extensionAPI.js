@@ -43,10 +43,10 @@ export const extensionApi = createApi({
 			invalidatesTags: ['Review', 'Course'],
 		}),
 		updateReview: builder.mutation({
-			query: (id, update) => ({
+			query: ({ id, ...rest }) => ({
 				url: `/reviews/${id}`,
-				method: 'PATCH',
-				body: update,
+				method: 'PUT',
+				body: rest,
 			}),
 			invalidatesTags: ['Review', 'Course'],
 		}),

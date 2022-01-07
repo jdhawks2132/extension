@@ -32,16 +32,19 @@ const CourseDetail = ({ user }) => {
 		await deleteReview(id);
 	};
 
-	const handleUpdate = async (id) => {
-		await updateReview(id, {
+	const handleUpdate = async (reviewId) => {
+		const review = {
+			id: reviewId,
 			comment: comment,
 			stars: stars,
-		});
+			user_id: user.id,
+			course_id: id,
+		};
+		await updateReview(review);
 		setComment('');
 		setStars('');
 	};
 
-	console.log(data, user);
 	return (
 		<div className='course-detail'>
 			{isSuccess && (
