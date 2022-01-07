@@ -9,10 +9,10 @@ import { useState } from 'react';
 
 const CourseDetail = ({ user }) => {
 	const { id } = useParams();
-	const [addReview, results] = useAddReviewMutation();
+	const [addReview] = useAddReviewMutation();
 	const [deleteReview] = useDeleteReviewMutation();
 	const [updateReview] = useUpdateReviewMutation();
-	const { data, error, isLoading, isFetching, isSuccess } = useCourseQuery(id);
+	const { data, isSuccess } = useCourseQuery(id);
 	const [comment, setComment] = useState('');
 	const [stars, setStars] = useState('');
 
