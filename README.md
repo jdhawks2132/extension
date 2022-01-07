@@ -7,7 +7,7 @@
 
 ## Learning Goals
 
-This application was built during Phase 4 of Flatiron School's software engineering program. The main learning objective was to utilize React/ Rails tech stack to demonstrate RESTful API conventions, user authentication/authorization, and full CRUD. As a team, we also decided to explore the Redux Toolkit and RTK Query as our state and API Manager. 
+This application was built during Phase 4 of Flatiron School's software engineering program. The main learning objective was to utilize a React/ Ruby on Rails tech stack to demonstrate RESTful API conventions, user authentication/authorization, and demonstrate full CRUD in at least one route. As a team, we also decided to explore the Redux Toolkit and RTK Query as our state/API manager. 
 
 ## Development Team
 
