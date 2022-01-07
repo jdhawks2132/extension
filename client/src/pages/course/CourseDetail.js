@@ -51,16 +51,25 @@ const CourseDetail = ({ user }) => {
 				<div>
 					<h2>{data.name}</h2>
 					<h3>{data.platform}</h3>
+					<br />
 					<p>{data.description}</p>
+					<br />
+					<p>User Comments:</p>
 					<ul>
 						{data.reviews.map((review) => {
 							return (
 								<li key={review.id}>
 									{review.comment} - {review.stars}/5
-									<button onClick={() => handleUpdate(review.id)}>
+									<button
+										className='review-btn'
+										onClick={() => handleUpdate(review.id)}
+									>
 										update
 									</button>
-									<button onClick={() => handleDelete(review.id)}>
+									<button
+										className='review-btn'
+										onClick={() => handleDelete(review.id)}
+									>
 										delete
 									</button>
 								</li>
